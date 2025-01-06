@@ -1,5 +1,6 @@
-import POM.HomePageScooter;
-import POM.OrderPageScooter;
+import org.junit.Before;
+import pom.HomePageScooter;
+import pom.OrderPageScooter;
 import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
 import org.junit.runner.RunWith;
@@ -7,11 +8,14 @@ import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import pom.WebDriverFactory;
 
 
 @RunWith(Enclosed.class)
 public class TestOrderChrome {
     private WebDriver driver;
+    private static final String DEFAULT_BROWSER_NAME = "CHROME";
+    private static final String BROWSER_NAME_ENV_VARIABLE = "BROWSER_NAME";
 
     @RunWith(Parameterized.class)
     public static class OrderTest {
@@ -46,13 +50,17 @@ public class TestOrderChrome {
             };
         }
 
+        @Before
+        public void before() {
+            String browserName = System.getenv(BROWSER_NAME_ENV_VARIABLE);
+            driver = WebDriverFactory.createForName(browserName != null ? browserName : DEFAULT_BROWSER_NAME);
+        }
 
         @Test
-        public void OrderTestRentScooter() {
+        public void orderTestRentScooter() {
 
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
-            driver = new ChromeDriver();
             HomePageScooter objHomePage = new HomePageScooter(driver);
             objHomePage.clickButtonOrderHead();
             OrderPageScooter objOrderPage = new OrderPageScooter(driver);
@@ -69,6 +77,8 @@ public class TestOrderChrome {
             objOrderPage.setComment(comment);
             objOrderPage.clickOrderCreateButton();
             objOrderPage.clickOrderConfirmButton();
+            String confirmHeaderText = "Заказ оформлен";
+            objOrderPage.isPageOpen(objOrderPage.getConfirmHeader(), confirmHeaderText);
         }
     }
 }

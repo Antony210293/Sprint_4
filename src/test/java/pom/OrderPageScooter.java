@@ -1,4 +1,4 @@
-package POM;
+package pom;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,6 +7,8 @@ import static org.hamcrest.core.Is.is;
 public class OrderPageScooter {
 
     private WebDriver driver;
+    // Домашняя страница
+    public static final String HOME_PAGE = "https://qa-scooter.praktikum-services.ru/";
 
     //Локатор заголовка страницы заказа
     private final By orderHeadline = By.className("Order_Header__BZXOb");
@@ -34,6 +36,9 @@ public class OrderPageScooter {
     private By orderCreateButton = By.xpath("//div[contains(@class,'Order_Buttons')]/button[text()='Заказать']");
     // Кнопка подтверждения заказа
     private By orderConfirmButton = By.xpath(".//button[text()='Да']");
+    // Кнопка посмотреть статус
+    private By confirmHeader = By.xpath(".//button[text()='Посмотреть статус']");
+
 
     // Метод для проверки открытия страницы после нажатия на кнопку "Заказать"
     public void isPageOpen(String headlineText, String text) {
@@ -109,5 +114,10 @@ public class OrderPageScooter {
     // Метод для подтверждения заказа
     public void clickOrderConfirmButton() {
         driver.findElement(orderConfirmButton).click();
+    }
+
+    // Метод для получения текста на кнопке для просмотра статуса заказа
+    public String getConfirmHeader() {
+        return driver.findElement(confirmHeader).getText();
     }
 }

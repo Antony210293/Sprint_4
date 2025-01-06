@@ -1,23 +1,26 @@
-import POM.HomePageScooter;
-import POM.OrderPageScooter;
+import pom.HomePageScooter;
+import pom.OrderPageScooter;
 import org.junit.After;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import static POM.OrderPageScooter.orderHeadlineText;
+
+import static pom.OrderPageScooter.HOME_PAGE;
+import static pom.OrderPageScooter.orderHeadlineText;
 
 
 
 public class ClickOrderButton {
     private WebDriver driver;
 
+
     @Test
     public void clickButtonOrderHeadPageOpen(){
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
         driver = new ChromeDriver();
-        driver.get("https://qa-scooter.praktikum-services.ru/");
+        driver.get(HOME_PAGE);
 
         HomePageScooter objHomePage = new HomePageScooter(driver);
         objHomePage.clickButtonOrderHead();
@@ -30,7 +33,7 @@ public class ClickOrderButton {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
         driver = new ChromeDriver();
-        driver.get("https://qa-scooter.praktikum-services.ru/");
+        driver.get(HOME_PAGE);
 
         HomePageScooter objHomePage = new HomePageScooter(driver);
         objHomePage.clickButtonOrderHead();

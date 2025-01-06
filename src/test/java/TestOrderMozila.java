@@ -1,5 +1,5 @@
-import POM.HomePageScooter;
-import POM.OrderPageScooter;
+import pom.HomePageScooter;
+import pom.OrderPageScooter;
 import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
 import org.junit.runner.RunWith;
