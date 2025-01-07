@@ -3,7 +3,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import pom.HomePageScooter;
 import org.hamcrest.MatcherAssert;
-import org.junit.After;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -65,7 +64,7 @@ public class ScooterQuestionAnswer {
 
 
                 objHomePage.clickQuestion(question);
-                driver.findElement(By.className("App_CookieButton__3cvqF")).click();
+                driver.findElement(COOKIE).click();
                 new WebDriverWait(driver, 3)
                         .until(ExpectedConditions.visibilityOfAllElementsLocatedBy(question));
                 MatcherAssert.assertThat(objHomePage.getAnswer(answer), is(answerText));

@@ -12,7 +12,7 @@ public class HomePageScooter {
     public HomePageScooter(WebDriver driver) {
         this.driver = driver;
     }
-
+    public static final By COOKIE =By.className("App_CookieButton__3cvqF");
     public static final By SCROLL = By.xpath(".//div[@class='accordion']");
     //Вопросы в нижней части домашней страницы
     //Сколько это стоит? И как оплатить?

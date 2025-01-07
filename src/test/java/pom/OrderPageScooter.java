@@ -11,9 +11,9 @@ public class OrderPageScooter {
     public static final String HOME_PAGE = "https://qa-scooter.praktikum-services.ru/";
 
     //Локатор заголовка страницы заказа
-    private final By orderHeadline = By.className("Order_Header__BZXOb");
+    private static final By ORDER_HEADLINE = By.className("Order_Header__BZXOb");
     // Заголовок страницы заказа (текст)
-    public static final String orderHeadlineText = "Для кого самокат";
+    public static final String ORDER_HEADLINE_TEXT = "Для кого самокат";
     //Имя
     private By nameField = By.xpath(".//input[@placeholder='* Имя']");
     // Фамилия
@@ -37,7 +37,7 @@ public class OrderPageScooter {
     // Кнопка подтверждения заказа
     private By orderConfirmButton = By.xpath(".//button[text()='Да']");
     // Кнопка посмотреть статус
-    private By confirmHeader = By.xpath(".//button[text()='Посмотреть статус']");
+    private By confirmHeader = By.className("Order_ModalHeader__3FDaJ");
 
 
     // Метод для проверки открытия страницы после нажатия на кнопку "Заказать"
@@ -47,7 +47,7 @@ public class OrderPageScooter {
 
     // Метод для получения текста заголовка страницы создания заказа
     public String getOrderHeadline() {
-        return driver.findElement(orderHeadline).getText();
+        return driver.findElement(ORDER_HEADLINE).getText();
     }
 
     public OrderPageScooter(WebDriver driver){

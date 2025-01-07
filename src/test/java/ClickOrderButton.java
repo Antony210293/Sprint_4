@@ -6,9 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-import static pom.OrderPageScooter.HOME_PAGE;
-import static pom.OrderPageScooter.orderHeadlineText;
-
+import static pom.OrderPageScooter.*;
 
 
 public class ClickOrderButton {
@@ -25,7 +23,7 @@ public class ClickOrderButton {
         HomePageScooter objHomePage = new HomePageScooter(driver);
         objHomePage.clickButtonOrderHead();
         OrderPageScooter objOrderPage = new OrderPageScooter(driver);
-        objOrderPage.isPageOpen(objOrderPage.getOrderHeadline() ,orderHeadlineText);
+        objOrderPage.isPageOpen(objOrderPage.getOrderHeadline() ,ORDER_HEADLINE_TEXT);
     }
 
     @Test
@@ -38,12 +36,8 @@ public class ClickOrderButton {
         HomePageScooter objHomePage = new HomePageScooter(driver);
         objHomePage.clickButtonOrderHead();
         OrderPageScooter objOrderPage = new OrderPageScooter(driver);
-        objOrderPage.isPageOpen(objOrderPage.getOrderHeadline() ,orderHeadlineText);
+        objOrderPage.isPageOpen(objOrderPage.getOrderHeadline() ,ORDER_HEADLINE_TEXT);
     }
-
-
-
-
 
     @After
     public void teardown() {
